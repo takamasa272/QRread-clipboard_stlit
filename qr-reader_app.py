@@ -1,9 +1,10 @@
-from PIL import ImageGrab
+from streamlit_paste_button import paste_image_button
 from cv2 import QRCodeDetector
 import streamlit as st
 import numpy as np
 
 def main():
+
     st.set_page_config(
         page_title="QR from clipboard",
         page_icon=":clipboard:",
@@ -22,20 +23,25 @@ def main():
     st.divider()
 
     # grab image from clipboard
-    clipImg = ImageGrab.grabclipboard()
-    
-    if clipImg == None:
-        raise TypeError("No image is detected on your clipboard!")
-    
-    # decode QR code
-    decoded_data = QR_decode(np.array(clipImg))
-    if decoded_data == []:
-        raise ValueError('There is no QR code!')
-    
-    st.header("Contents")
-    # output decoded data
-    for i, content in enumerate(decoded_data):
-        st.write(i, content)
+    paste_result = paste_image_button(
+        label="📋 Paste an image",
+        background_color="#3DA4B5",
+        hover_background_color="#EEEEEE",
+        errors='raise'
+    )
+
+    if paste_result.image_data is not None:
+        clipImg = paste_result.image_data
+
+        # decode QR code
+        decoded_data = QR_decode(np.array(clipImg))
+        if decoded_data == []:
+            raise ValueError('There is no QR code!')
+        
+        st.header("Contents")
+        # output decoded data
+        for i, content in enumerate(decoded_data):
+            st.write(i, content)
 
 
 def QR_decode(clipImg: np.ndarray) -> list:

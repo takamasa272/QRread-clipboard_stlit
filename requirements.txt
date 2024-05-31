@@ -1,4 +1,4 @@
 opencv-python-headless
-Pillow
 numpy
 streamlit
+streamlit-paste-button
