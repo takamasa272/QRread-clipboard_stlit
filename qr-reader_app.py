@@ -20,7 +20,6 @@ def main():
     # website contents below
     st.title('QR code reader from Clipboard :clipboard:')
     st.write('USAGE: Copy image (contains QR codes) and push ":clipboard: Paste an image" button')
-    st.divider()
 
     # grab image from clipboard
     paste_result = paste_image_button(
@@ -39,6 +38,7 @@ def main():
             st.error('**Error**: No QR code found in clipboard', icon='📋')
 
         else:
+            st.divider()
             st.header("Contents")
             # output decoded data
             for i, content in enumerate(decoded_data):
