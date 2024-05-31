@@ -19,14 +19,14 @@ def main():
 
     # website contents below
     st.title('QR code reader from Clipboard :clipboard:')
-    st.write('USAGE: Copy image (contains QR codes) and reload this page.')
+    st.write('USAGE: Copy image (contains QR codes) and push ":clipboard: Paste an image" button')
     st.divider()
 
     # grab image from clipboard
     paste_result = paste_image_button(
         label="📋 Paste an image",
         background_color="#3DA4B5",
-        hover_background_color="#EEEEEE",
+        hover_background_color="#CCCCCC",
         errors='raise'
     )
 
