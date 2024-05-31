@@ -36,7 +36,7 @@ def main():
         # decode QR code
         decoded_data = QR_decode(np.array(clipImg))
         if decoded_data == []:
-            st.error('**Error**: No QR code found in clipboard', icon=':📋:')
+            st.error('**Error**: No QR code found in clipboard', icon='📋')
 
         else:
             st.header("Contents")
