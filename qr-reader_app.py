@@ -36,13 +36,13 @@ def main():
         # decode QR code
         decoded_data = QR_decode(np.array(clipImg))
         if decoded_data == []:
-            st.error('**Error**: No QR code found in clipboard', icon='🚨')
-            # raise ValueError('There is no QR code!')
-        
-        st.header("Contents")
-        # output decoded data
-        for i, content in enumerate(decoded_data):
-            st.write(i, content)
+            st.error('**Error**: No QR code found in clipboard', icon=':clipboard:')
+
+        else:
+            st.header("Contents")
+            # output decoded data
+            for i, content in enumerate(decoded_data):
+                st.write(i, content)
 
 
 def QR_decode(clipImg: np.ndarray) -> list:
